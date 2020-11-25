@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
-import { AwsSlsAppStack } from '../lib/aws-sls-app-stack';
+import { BackendStack } from '../lib/backend-stack';
 
 const app = new cdk.App();
-new AwsSlsAppStack(app, 'AwsSlsAppStack');
+const region: string = 'ap-northeast-1';
+new BackendStack(app,'BackendStack',{env: {region: region}});

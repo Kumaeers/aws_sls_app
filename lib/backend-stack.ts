@@ -23,7 +23,7 @@ export class BackendStack extends Stack {
         });
 
         // DynamoDB
-        const personTable = new Table(this,'PersonsTable',{
+        const personsTable = new Table(this,'PersonsTable',{
             // リクエストに対して自動でスケールするMODE
             billingMode: BillingMode.PAY_PER_REQUEST,
             // PartitionKey:id,Attribute1: FirstName,Attribute2: LastName
@@ -52,7 +52,7 @@ export class BackendStack extends Stack {
         const personIdPath = personsPath.addResource('{personId}');
         // GET:persons/ 一覧取得
         personsPath.addMethod(HTTPMethod.GET, personsInteg);
-        // POST:persons/　ユーザー登録
+        // POST:persons/ ユーザー登録
         personsPath.addMethod(HTTPMethod.POST, personsInteg);
         // DELETE:persons/{personsId} ユーザー削除
         personIdPath.addMethod(HTTPMethod.DELETE, personsInteg);

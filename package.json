@@ -5,10 +5,13 @@
     "aws-sls-app": "bin/aws-sls-app.js"
   },
   "scripts": {
-    "build": "tsc",
     "watch": "tsc -w",
+    "cdk": "cdk",
+    "build": "tsc",
     "test": "jest",
-    "cdk": "cdk"
+    "build:backend": "GO111MODULE=off go get -v -t -d ./src/backend/persons/... && GOOS=linux GOARCH=amd64 go build -o ./src/backend/persons/persons ./src/backend/persons/**.go",
+    "deploy": "npm run build && npm run build:backend && npm run deploy:backend",
+    "deploy:backend": "cdk deploy BackendStack"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.72.0",
