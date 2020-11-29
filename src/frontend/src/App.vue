@@ -1,9 +1,9 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app">
+    <ion-app>
+      <ion-vue-router />
+    </ion-app>
   </div>
-  <router-view />
 </template>
 
 <style>
