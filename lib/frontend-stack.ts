@@ -23,8 +23,7 @@ export class FrontendStack extends Stack {
             resources: [`websiteBucket.bucketArn/*`],
             principals: [new CanonicalUserPrincipal(OAI.cloudFrontOriginAccessIdentityS3CanonicalUserId)],
         });
-        // s3にポリシーを割り当て
-        websiteBucket.addToResourcePolicy(webSiteBucketPolicyStatement);
+        // websiteBucket.addToResourcePolicy(websiteBucketPolicyStatement);
 
         const distribution = new CloudFrontWebDistribution(this,'WebsiteDistribution',{
             // 取得するoriginの設定
@@ -36,9 +35,9 @@ export class FrontendStack extends Stack {
                     },
                     behaviors: [{
                         isDefaultBehavior: true,
-                        minTtl: Duration.seconds(0),
-                        maxTtl: Duration.seconds(0),
-                        defaultTtl: Duration.seconds(0),
+                        // minTtl: Duration.seconds(0),
+                        // maxTtl: Duration.seconds(0),
+                        // defaultTtl: Duration.seconds(0),
                     }]
                 }
             ],
